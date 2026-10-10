@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ivory:      #F8F4ED;
+  --color-card:       #FFFFFF;
+  --color-charcoal:   #262321;
+  --color-ink-2:      #45403B;
+  --color-muted:      #6A625A;
+  --color-gold:       #735719;
+  --color-gold-orn:   #C6A664;
+  --color-gold-soft:  #F4EDDF;
+  --color-rose:       #834F49;
+  --color-rose-soft:  #F3E6E3;
+  --color-sage:       #44604B;
+  --color-sage-soft:  #E6EDE6;
+  --color-line:       #E6DFD3;
+  --color-field:      #8E8578;
+  --color-pos:        #3F6B4A;
+  --color-neg:        #9B3226;
+
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans:    "Jost", system-ui, sans-serif;
+}
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--color-ivory);
+    color: var(--color-charcoal);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  :focus-visible { outline: 2px solid var(--color-gold); outline-offset: 3px; }
+  ::selection { background: var(--color-charcoal); color: var(--color-ivory); }
+}
+
+@layer components {
+  .shell { width: 100%; max-width: 78rem; margin-inline: auto; padding-inline: 1.15rem; }
+  @media (min-width: 768px) { .shell { padding-inline: 2.25rem; } }
+
+  /* Letter-spaced small caps, the one typographic motif that carries the
+     luxury register without resorting to gold everywhere. */
+  .caps {
+    font-size: 0.6875rem; font-weight: 400; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--color-muted);
+  }
+  .caps-gold { color: var(--color-gold); }
+
+  .display-1 { font-family: var(--font-display); font-weight: 300; font-size: clamp(2.4rem, 6vw, 4.2rem); line-height: 1.04; letter-spacing: -0.01em; }
+  .display-2 { font-family: var(--font-display); font-weight: 300; font-size: clamp(1.75rem, 3.4vw, 2.6rem); line-height: 1.1; }
+  .display-3 { font-family: var(--font-display); font-weight: 400; font-size: 1.3rem; line-height: 1.25; }
+
+  .rule { border-top: 1px solid var(--color-line); }
+
+  /* A thin gold hairline used as a section opener, never as a background. */
+  .hairline::before {
+    content: ""; display: block; width: 2.5rem; height: 1px;
+    background: var(--color-gold-orn); margin-bottom: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important; transition-duration: 0.01ms !important;
+  }
+}
